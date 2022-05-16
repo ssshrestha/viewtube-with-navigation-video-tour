@@ -1,0 +1,67 @@
+
+ <router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <button mat-icon-button class="example-icon" (click)="opened=!opened">
+      <mat-icon>menu</mat-icon>
+    </button>
+  <span>ViewTube</span>
+  <span class="example-spacer"></span>
+  <mat-form-field appearance="legacy">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="">
+    </mat-form-field>
+    <button 
+    [matTooltip]="message.value"
+    mat-icon-button class="example-icon favorite-icon">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon favorite-icon" [matTooltip]="message1.value">
+      <mat-icon>mic</mat-icon>
+    </button>
+
+  <span class="example-spacer"></span>
+  <button mat-icon-button class="example-icon favorite-icon" [matTooltip]="message2.value">
+    <mat-icon>notifications</mat-icon>
+  </button>
+  <a routerLink="home"></a>
+  <a routerLink="upload">
+  <button mat-icon-button class="example-icon" [matTooltip]="message3.value">
+      <mat-icon><span class="material-symbols-outlined">
+          video_call
+          </span></mat-icon>
+    </button></a>
+    <button mat-icon-button class="example-icon" [matTooltip]="message4.value">
+      <mat-icon>apps</mat-icon>
+    </button>
+  <button mat-icon-button class="example-icon" [matMenuTriggerFor]="beforeMenu" [matTooltip]="message5.value">
+    <mat-icon>person</mat-icon>
+    <mat-menu #beforeMenu="matMenu" xPosition="before">
+      <button mat-menu-item><mat-icon>settings</mat-icon>Settings</button>
+      <button mat-menu-item><mat-icon>help</mat-icon>Help</button>
+      <button mat-menu-item><mat-icon>notifications_off</mat-icon>Disable Alerts</button>
+      <button mat-menu-item disabled=""><mat-icon>chat</mat-icon>Send Feedback</button>
+    </mat-menu>
+  </button>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav [(opened)]="opened" mode="side">
+    <button mat-menu-item><mat-icon>home</mat-icon>Home</button>
+    <button mat-menu-item><mat-icon>explore</mat-icon>Explore</button>
+    <button mat-menu-item><mat-icon>subscriptions</mat-icon>Subscriptions</button>
+    <button mat-menu-item><mat-icon>video_library</mat-icon>Library</button>
+    <button mat-menu-item><mat-icon>history</mat-icon>History</button><br>
+    <mat-divider></mat-divider><br>
+    <p>Sign in to like videos, comment,and subscribe. <br> <br>
+    <button mat-stroked-button color="primary"><mat-icon >recommend</mat-icon>SIGN IN</button></p>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-chips-bar></app-chips-bar>
+    <app-video-content></app-video-content>
+  </mat-sidenav-content>
+</mat-sidenav-container> 
+
+
+
+
+ 

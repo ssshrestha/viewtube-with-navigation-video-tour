@@ -1,0 +1,32 @@
+.mat-sidenav{
+    width: 200px;
+    height:auto;
+  }
+  h2{
+    margin-top: 8%;
+    margin-left: 8%;
+}
+
+  .mat-form-field {
+    min-width:auto;
+  }
+
+  .title{
+    min-width: 664px;
+  }
+
+.event{
+  margin-right: 1%;
+  width: 400px;
+  
+}
+textarea{
+  height: 140px;
+}
+.guest{
+  width: 400px;
+}
+
+.example-chip-list {
+  width: 400px;
+}

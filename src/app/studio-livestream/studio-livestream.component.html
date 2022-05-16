@@ -1,0 +1,82 @@
+<!-- <mat-sidenav-container>
+    <mat-sidenav opened mode="side" class="sidenav">
+      <h2>ViewTube</h2>
+      <br />
+      <button mat-flat-button>Upload</button> <br />
+      <button mat-flat-button>Live</button>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <mat-toolbar color="primary"> ViewTube Studio </mat-toolbar> -->
+
+
+      <div style="min-width: 1315px;min-height: 620px; margin-left: 2%; margin-top: 2%;">
+          <h1>Live Stream Editor</h1>
+          <form [formGroup]="liveForm" (ngSubmit)="live()">
+          <mat-form-field class="title" appearance="fill">
+            <input matInput placeholder="Add Title" formControlName="title">
+          </mat-form-field>
+
+        <br>
+          <mat-form-field class="example-chip-list" appearance="fill" style="margin-right: 1%; max-width: 210px;">
+            <mat-label>Enter the Start Date</mat-label>
+            <input matInput   [matDatepicker]="picker" formControlName="startdate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+             <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="margin-right: 1%;">
+            <input matInput placeholder="From Time" formControlName="fromtime">
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="margin-right: 1%;">
+            <input matInput placeholder="To Time" formControlName="totime">
+          </mat-form-field>
+
+          <!-- <mat-form-field class="example-chip-list" appearance="fill" style="margin-right: 1%; max-width: 210px;">
+            <mat-label>Enter the End Date</mat-label>
+            <input matInput   [matDatepicker]="picker" formControlName="enddate">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+             <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->
+          <!-- <mat-form-field appearance="fill" style="margin-right: 1%;">
+            <input matInput [matDatepicker]="dp" [formControl]="date" formControlName="enddate">
+            <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp></mat-datepicker>
+          </mat-form-field> -->
+       
+              <h1>Event Details</h1>
+
+              <div style="display: flex">
+                <div style="margin-right: 1%;">
+              <mat-form-field class="event" appearance="fill">
+                <mat-label>Add Event Details</mat-label>
+                <textarea matInput formControlName="text"></textarea>
+              </mat-form-field>
+            </div>
+            <div>
+              <mat-form-field class="example-chip-list" appearance="outline">
+                <mat-chip-list #chipList>
+                  <mat-chip *ngFor="let guest of guests" (removed)="remove(guest)">
+                    {{guest.name}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Guests"
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)" formControlName="chip">
+                </mat-chip-list>
+              </mat-form-field>
+            </div></div>
+
+              <button mat-raised-button color="accent" type="submit"
+              (click)="openSnackBar(liveForm.value)"
+              [disabled]="liveForm.invalid" >
+              Save
+            </button>
+          </form>
+      </div>

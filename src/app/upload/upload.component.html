@@ -1,0 +1,175 @@
+<mat-sidenav-container>
+  <mat-sidenav opened mode="side" class="sidenav">
+    <h2>ViewTube</h2>
+    <br />
+    <a routerLink="upload">
+    <button mat-flat-button>Upload</button></a> <br />
+    <a routerLink="live"><button mat-flat-button>Live</button></a>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary"> ViewTube Studio </mat-toolbar>
+<router-outlet></router-outlet>
+    <div style="display: flex">
+      <div style="min-width: 665px">
+        <form #uploadForm="ngForm" (ngSubmit)="upload(uploadForm.value)">
+          <h1>
+            Video Details<button mat-raised-button color="accent"
+            (click)="openSnackBar(uploadForm.value)"
+            type="submit" [disabled]="uploadForm.invalid">
+              Save
+            </button>
+          </h1>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Video Url</mat-label>
+            <input matInput #url="ngModel" name="url" required 
+            pattern="^((http[s]?|ftp):\/)?\/?([^:\/\s]+)((\/\w+)*\/)([\w\-\.]+[^#?\s]+)(.*)?(#[\w\-]+)?$"
+             ngModel/>
+            <mat-hint>Video url needs to be of type Youtube Embed</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Title</mat-label>
+            <input matInput name="title" #title="ngModel"  maxlength="200" required ngModel />
+            <mat-hint align="end">{{ title.value?.length || 0 }}/200</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea matInput #description="ngModel" name="description" ngModel></textarea>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Video Duration</mat-label>
+            <input matInput #duration="ngModel" name="duration" pattern="(?<![\d:])(?:(?:(\d\d?):([0-5]\d))|([0-5]?\d)):([0-5]\d)(?![\d:])" ngModel />
+            <mat-hint>Enter the duration in the following format hh:mm:ss</mat-hint>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Channel Title</mat-label>
+            <input matInput #title="ngModel" name="title" required ngModel  />
+          </mat-form-field>
+          <h1>Audience</h1> <br>
+          
+          <label id="example-radio-group-label">Is this video made for kids?</label>
+          <mat-radio-group class="example-radio-group" #kids="ngModel" name="kids" ngModel>
+            <mat-radio-button class="example-radio-button" value="Yes,its made for Kids">Yes,its made for Kids</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="Not for kids">Not for kids</mat-radio-button>
+          </mat-radio-group> <br> <br>
+
+          <label id="example-radio-group-label">Is this video made for adults?</label>
+          <mat-radio-group class="example-radio-group" #adults="ngModel" name="adults" ngModel>
+            <mat-radio-button class="example-radio-button" value="Yes, Restrict my videos to viewers over 18">Yes, Restrict my videos to viewers over 18</mat-radio-button>
+            <mat-radio-button class="example-radio-button" value="No, don't restrict my videos to viewers over 18">No, don't restrict my videos to viewers over 18</mat-radio-button>
+          </mat-radio-group> <br> <br>
+
+          <label>Video Tag</label>
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Video Tag</mat-label>
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let video of videos" (removed)="remove(video)">
+                {{video.name}}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip>
+              <input placeholder="New Tag"
+                     [matChipInputFor]="chipList"
+                     [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                     [matChipInputAddOnBlur]="addOnBlur"
+                     (matChipInputTokenEnd)="add($event)" #tags="ngModel" name="tags" ngModel>
+            </mat-chip-list>
+          </mat-form-field> <br> <br>
+
+
+          <label>Recording Date</label>
+          <mat-form-field class="example-chip-list" appearance="fill">
+            <mat-label>Enter the Date</mat-label>
+            <input matInput #date="ngModel" name="date" ngModel [matDatepicker]="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+             <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <br><br>
+            <label>Video Location</label>
+            <mat-form-field appearance="fill">
+              <mat-label>Select your location</mat-label>
+              <mat-select disableRipple #location="ngModel" name="location" ngModel>
+                <mat-option value="India">India</mat-option>
+                <mat-option value="USA">USA</mat-option>
+                <mat-option value="UK">UK</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+            <label>License</label>
+            <mat-form-field appearance="fill">
+              <mat-select disableRipple #license="ngModel" name="license" ngModel>
+                <mat-option value="Standard Viewtube License">Standard Viewtube License</mat-option>
+                <mat-option value="Creative Common License">Creative Common License</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+            <label>Distribution</label>
+            <mat-form-field appearance="fill">
+              <mat-select disableRipple #distribution="ngModel" name="distribution" ngModel >
+                <mat-option value="Everywhere">Everywhere</mat-option>
+                <mat-option value="Creative Common License">Creative Common License</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+            <label>Video Category</label>
+            <mat-form-field appearance="fill">
+              <mat-select disableRipple #category="ngModel" name="category" ngModel>
+                <mat-option value="Film & Animation">Film & Animation</mat-option>
+                <mat-option value="Autos & Vehicles">Autos & Vehicles</mat-option>
+                <mat-option value="Music">Music</mat-option>
+                <mat-option value="Pets & Animals">Pets & Animals</mat-option>
+                <mat-option value="Sports">Sports</mat-option>
+                <mat-option value="Travel & Events">Travel & Events</mat-option>
+                <mat-option value="Gaming">Gaming</mat-option>
+                <mat-option value="People & Blogs">People & Blogs</mat-option>
+                <mat-option value="Comedy">Comedy</mat-option>
+                <mat-option value="Entertainment">Entertainment</mat-option>
+                <mat-option value="News & Politics">News & Politics</mat-option>
+                <mat-option value="How to & Style">How to & Style</mat-option>
+                <mat-option value="Education">Education</mat-option>
+                <mat-option value="Science & Technology">Science & Technology</mat-option>
+                <mat-option value="Nonprofits & Activism">Nonprofits & Activism</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <br>
+            <label>Visibility</label>
+            <mat-form-field appearance="fill">
+              <mat-select disableRipple placeholder="*" required #visibility="ngModel" name="visibility" ngModel>
+                <mat-option value="Private">Private</mat-option>
+                <mat-option value="Public">Public</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </form>
+      </div>
+
+
+
+      <div style="min-width: 640px" class="second">
+        <h1>Video Preview</h1>
+        <mat-card>
+          <img mat-card-image />
+          <mat-card-title>Description</mat-card-title> <br />
+          <mat-card-subtitle>Visibility.Public</mat-card-subtitle>
+          <mat-card-subtitle
+            >Distribution.Only on Monetized Plateforms</mat-card-subtitle
+          >
+          <mat-card-subtitle
+            >License.Creative Commons License</mat-card-subtitle
+          >
+        </mat-card>
+      </div>
+    </div>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>

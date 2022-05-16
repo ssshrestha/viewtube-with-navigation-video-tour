@@ -1,0 +1,110 @@
+<!-- Display video cards here with 
+    poster-image
+    length of video in hh:mm:ss format
+    2-liner description
+    duration since last published 
+    number of views
+-->
+<div style="display: flex">
+  <div style="min-width: 380px">
+    <mat-card matRipple *ngFor="let data of result">
+      <img
+        mat-card-image
+        src="{{ data.snippet.thumbnails.medium.url }}"
+        alt="webImage"
+      />
+      <mat-label class="time">{{data.contentDetails.length}}</mat-label>
+
+      <mat-card-content>
+        <mat-card-title>{{ data.snippet.title }}</mat-card-title> <br />
+        <mat-card-subtitle>{{ data.snippet.channelTitle }}</mat-card-subtitle>
+        <mat-label>{{ data.statistics.viewCount }} views . </mat-label>
+        <mat-label>{{ data.snippet.relativeTime }}</mat-label>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+<!-- <div style="display:flex;" >
+    <div style="min-width: 380px">
+      
+        <mat-card class="example-card" matRipple>
+          <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+          <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+          <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+          <mat-card-content>48782 views. 6 months ago</mat-card-content>
+          </mat-card>
+    </div>
+    <div style="min-width: 380px">
+      <mat-card class="example-card" matRipple>
+        <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+        <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+        <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+        <mat-card-content>48782 views. 6 months ago</mat-card-content>
+        </mat-card>
+  </div>
+  <div style="min-width: 380px">
+    <mat-card class="example-card" matRipple>
+      <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+      <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+      <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+      <mat-card-content>48782 views. 6 months ago</mat-card-content>
+      </mat-card>
+</div>
+<div style="min-width: 380px">
+  <mat-card class="example-card" matRipple>
+    <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+    <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+    <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+    <mat-card-content>48782 views. 6 months ago</mat-card-content>
+    </mat-card>
+</div>
+ </div>
+
+
+ <div style="display:flex; margin-top: 5%;" >
+  <div style="min-width: 380px" >
+      <mat-card class="example-card" matRipple>
+        <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+        <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+        <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+        <mat-card-content>48782 views. 6 months ago</mat-card-content>
+        </mat-card>
+  </div>
+  <div style="min-width: 380px">
+    <mat-card class="example-card" matRipple>
+      <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+      <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+      <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+      <mat-card-content>48782 views. 6 months ago</mat-card-content>
+      </mat-card>
+</div>
+<div style="min-width: 380px">
+  <mat-card class="example-card" matRipple>
+    <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+    <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+    <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+    <mat-card-content>48782 views. 6 months ago</mat-card-content>
+    </mat-card>
+</div>
+<div style="min-width: 380px">
+<mat-card class="example-card" matRipple>
+  <img mat-card-image src="./../assets/Screenshot_520.png" alt="No Image">
+  <mat-card-subtitle>My Advice for New Programmers<br>(Things I Wish I Knew) </mat-card-subtitle>
+  <mat-card-subtitle> Clever Programmer</mat-card-subtitle>
+  <mat-card-content>48782 views. 6 months ago</mat-card-content>
+  </mat-card>
+</div>
+</div> -->
+
+<!-- <mat-card
+  *ngFor="let photo of photos_brazil">
+  <mat-card-header>
+    <mat-card-title>{{photo.title}}</mat-card-title>
+    <mat-card-subtitle>{{photo.subTitle}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{photo.img_source_small}}" alt="{{photo.alt}}">
+  <mat-card-content>
+    <p>{{photo.content}}</p>
+  </mat-card-content>
+</mat-card> -->
