@@ -30,6 +30,7 @@ import { StudioLivestreamComponent } from './studio-livestream/studio-livestream
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { StudioComponent } from './studio/studio.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ChipsBarComponent,
     UploadComponent,
     StudioLivestreamComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    StudioComponent
   ],
   imports: [
     BrowserModule,

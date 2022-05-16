@@ -1,0 +1,14 @@
+.mat-sidenav{
+    width: 200px;
+    min-height: 1647px;
+  }
+
+  h2{
+    margin-top: 8%;
+    margin-left: 8%;
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}

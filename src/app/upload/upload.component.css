@@ -2,6 +2,9 @@
     width: 200px;
     height:auto;
   }
+  mat-sidenav-container{
+    margin-left: 200px;
+  }
   .mat-raised-button{
       float: right;
   }

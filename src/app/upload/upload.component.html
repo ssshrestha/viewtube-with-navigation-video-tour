@@ -1,14 +1,14 @@
 <mat-sidenav-container>
-  <mat-sidenav opened mode="side" class="sidenav">
+  <!-- <mat-sidenav opened mode="side" class="sidenav">
     <h2>ViewTube</h2>
     <br />
-    <a routerLink="upload">
+    <a routerLink="studio/upload">
     <button mat-flat-button>Upload</button></a> <br />
     <a routerLink="live"><button mat-flat-button>Live</button></a>
-  </mat-sidenav>
+  </mat-sidenav> -->
   <mat-sidenav-content>
     <mat-toolbar color="primary"> ViewTube Studio </mat-toolbar>
-<router-outlet></router-outlet>
+<!-- <router-outlet></router-outlet> -->
     <div style="display: flex">
       <div style="min-width: 665px">
         <form #uploadForm="ngForm" (ngSubmit)="upload(uploadForm.value)">
